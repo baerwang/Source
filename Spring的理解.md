@@ -95,14 +95,14 @@ CGLIb动态代理时通过字节码底层继承要代理类来实现的(如果�
 
 > Spring中的单例bean的线程安全问题了解吗
 
-大部分时候我们并没有在系统中使用多线程，所以很少有人去回关注这个问题。单例bean存在线程问题，主要是因为当多个线程操作同一个对象的时候，对这个对象的非静态成员变量的写操作会存在线程安全问题。
+大部分时候我们并没有在系统中使用多线程，所以很少有人去会关注这个问题。单例bean存在线程问题，主要是因为当多个线程操作同一个对象的时候，对这个对象的非静态成员变量的写操作会存在线程安全问题。
 
 常见的有两种解决办法：
 
 - 在bean对象中尽量避免定义可变的成员变量
 - 在类中定义一个ThreadLocal成员变量，将需要的可变成员变量保存在ThreadLocal中。
 
-> Spring中的bean声明周期
+> Spring中的bean生命周期
 
 这部分网上有很多文章都讲到了，下面的内容整理自：https://yemengying.com/2016/07/14/spring-bean-life-cycle/ ，除了这篇文章，再推荐一篇很不错的文章 ：https://www.cnblogs.com/zrtqsk/p/3735273.html 。
 
@@ -141,7 +141,7 @@ CGLIb动态代理时通过字节码底层继承要代理类来实现的(如果�
 
 Model2模式下还存在很多问题，Model2的抽象和封装程序远远不够，使用Model2进行开发时候不可避免重复造轮子，这就大大降低了程序的可维护性和复用性。于是很多Java Web开发相关的MVC框架应该运而生比如Struts2，但是Struts2比较笨重，随着Spring轻量级开发框架的流行，Spring生态出现了Spring MVC框架，SpringMVC是当前最优秀的MVC框架，相当于Struts2，Spring MVC使用更加简单和方便，开发效率更高，并且Spring MVC运行效率比较快。
 
-MVC是一种设置模式，Spring MVC是一款很优秀的MVC框架。Spring MVC可以帮助我们进行更简洁的Web层的开发，并且它天生于Spring框架集成。Spring MVC下我们一般把后端项目分为Service层(处理业务)，Dao层(数据库操作)，Entiry层(实体类)，Controller层(控制层，返回数据给前台页面)。
+MVC是一种设计模式，Spring MVC是一款很优秀的MVC框架。Spring MVC可以帮助我们进行更简洁的Web层的开发，并且它天生于Spring框架集成。Spring MVC下我们一般把后端项目分为Service层(处理业务)，Dao层(数据库操作)，Entiry层(实体类)，Controller层(控制层，返回数据给前台页面)。
 
 ### Spring MVC 简单原理图：
 

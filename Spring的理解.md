@@ -1,5 +1,3 @@
-> 
->
 > Spring IOC 和 AOP 的理解
 
 ### IOC
@@ -110,33 +108,33 @@ CGLIb动态代理时通过字节码底层继承要代理类来实现的(如果�
 
 这部分网上有很多文章都讲到了，下面的内容整理自：https://yemengying.com/2016/07/14/spring-bean-life-cycle/ ，除了这篇文章，再推荐一篇很不错的文章 ：https://www.cnblogs.com/zrtqsk/p/3735273.html 。
 
-- Bean 容器找到配置文件中的Spring Bean 的定义
+1. Bean 容器找到配置文件中的Spring Bean 的定义
 
-- B容器利用Java Reflection API创建一个Bean的实例
+2. B容器利用Java Reflection API创建一个Bean的实例
 
-- 如果涉及到一些属性值利用set()方法设置一些属性值
+3. 如果涉及到一些属性值利用set()方法设置一些属性值
 
-- 如果Bean实现了BeanNameAware接口，调用setBeanName()，传入Bean的名字
+4. 如果Bean实现了BeanNameAware接口，调用setBeanName()，传入Bean的名字
 
-- 如果Bean实现了BeanClassLoaderAware接口，调用setBeanClassLoader()方法，传入ClassLoader对象的实例
+5. 如果Bean实现了BeanClassLoaderAware接口，调用setBeanClassLoader()方法，传入ClassLoader对象的实例
 
-- 如果Bean实现了BeanFactoryAware接口，调用了setBeanClassLoader()方法，传入ClassLoader对象的实例
+6. 如果Bean实现了BeanFactoryAware接口，调用了setBeanClassLoader()方法，传入ClassLoader对象的实例
 
-- 于上面的类似，如果实现了其他的 *.Aware接口，就调用相应的方法
+7. 于上面的类似，如果实现了其他的 *.Aware接口，就调用相应的方法
 
-- 如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessBeforeInitialization()方法
+8. 如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcess ()方法
 
-- 如果Bean实现了InitializingBean接口，执行afterPropertiesSet()方法
+9. 如果Bean实现了InitializingBean接口，执行afterPropertiesSet()方法
 
-- 如果Bean在配置文件中的定义包含init-method属性，执行指定的方法
+10. 如果Bean在配置文件中的定义包含init-method属性，执行指定的方法
 
-- 如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessAfterInitialization()方法
+11. 如果有和加载这个Bean的Spring容器相关的BeanPostProcessor对象，执行postProcessAfterInitialization()方法
 
-- 当要销毁Bean的时候，如果Bean实现了DisposableBean接口，执行destroy()方法
+12. 当要销毁Bean的时候，如果Bean实现了DisposableBean接口，执行destroy()方法
 
-- 当要销毁Bean的时候，如果Bean在配置文件中定义包含destroy-method属性，执行指定的方法
+13. 当要销毁Bean的时候，如果Bean在配置文件中定义包含destroy-method属性，执行指定的方法
 
-  ![Spring Bean 生命周期](D:\Software\data\md\images\2020313\202003141211.png)
+   ![Spring Bean 生命周期](D:\Software\data\md\images\2020313\202003141211.png)
 
 > SpringMVC 了解
 

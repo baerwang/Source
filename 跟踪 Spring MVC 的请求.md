@@ -1,6 +1,6 @@
 # 跟踪 Spring MVC 的请求
 
-![image-20200722161857884](images\image-20200722161857884.png)
+![image-20200722161857884](images/image-20200722161857884.png)
 
 ​	用户请求浏览器①，会带用户所请求内容的信息，至少会包含请求的URL，可能会带其他的信息，比如用户提交的表单信息。
 ​	请求的是Spring的DispatcherServlet。Spring MVC 所有的请求都会通过一个前端控制器(Controller)Servlet。前端控制器是常用的Web应用程序模式，在这里将请求给应用程序的其他组件来执行实际的处理，在Spring MVC中，DispatcherServlet就是前端控制器。

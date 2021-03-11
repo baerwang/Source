@@ -3,8 +3,9 @@
 ## 安装
 
 1. 需要安装JDK(1.8) [JDK-1.8安装教程](https://www.cnblogs.com/manmanchanglu/p/11783720.html)
-2. 解压pdi-ce-7.1.0.0-12.zip
-3. 双击运行Spoon.bat
+2. 下载[Kettle](https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip/download)
+3. 解压pdi-ce-7.1.0.0-12.zip
+4. 双击运行Spoon.bat
 
 ![image-20210311093058678](images\image-20210311093058678.png)
 

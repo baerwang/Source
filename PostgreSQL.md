@@ -72,7 +72,13 @@
    systemctl restart postgresql-9.6.service
    ```
 
-9. 查看版本，安装成功
+9. 查看状态
+
+   ```cmd
+   systemctl status postgresql-9.6.service
+   ```
+
+10. 查看版本，安装成功
 
    ```cmd
    psql --version
@@ -80,9 +86,17 @@
 
 ## 基本使用
 
-> 创建数据库：createdb demo
+> 进入数据库：su postgresql
+>
+> 输入密码：psql
 >
 > 查看数据库：psql -l
+>
+> 创建角色：create role root login createdb createrole superuser replication password '123456'
+>
+> 查看角色：\du
+>
+> 创建数据库： create database home owner root
 >
 > 进入数据库：psql demo # demo是数据库名称
 >
@@ -105,10 +119,64 @@
 > 在-bash-4.2$ 目录下创建，也可以是其他的目录，自行百度
 > 	vim db.sql , 内容位下方：
 > 		create table posts(
->         title varchar(255) not null,
->         content text,
->         created_date timestamp default 'now'
+>      title varchar(255) not null,
+>      content text,
+>      created_date timestamp default 'now'
 > 	);
+
+## 备份/恢复
+
+备份数据 在目录下，不是在sql环境
+
+```cmd
+pg_dump -U postgres home -O -x > home.bk
+```
+
+恢复数据
+
+```cmd
+psql -U root -d home < /home.bk
+```
+
+备份恢复**单表**数据
+
+备份
+
+```cmd
+pg_dump -U root db -t table -f /table.bk
+```
+
+恢复
+
+```cmd
+psql -U root -d db < /table.bk
+```
+
+## pgbench 压力测试工具
+
+详见：https://blog.csdn.net/enzesheng/article/details/42720691
+
+1. 初始化表
+
+    create database pgbench;
+
+    pgbench -U postgres -h 127.0.0.1 -s 1 -I pgbench
+
+    -s：生成的行数乘以比例因子。比如，-s 100会在pgbench_accounts表中将会生成1000万条记录。默认值是1。
+
+2. 执行压力测试
+
+    pgbench -U postgres -h 127.0.0.1 -T 10 -c 1 -r pgbench
+
+    pgbench -U postgres -h 127.0.0.1 -t 100 -c 1 -r pgbench
+
+    -c：模拟的客户数量,具体指并发运行的数据库会话数。默认值为1。
+
+    -t：每个客户端运行的事务数量，默认值为10。
+
+    -T：运行测试这么多秒,而不是每个客户端运行固定数量的事务。-t - t是互相排斥的。
+
+    -r：基准测试运行完成后报告每个命令的平均延迟时间（从客户角度看到的执行时间）。
 
 ## 字段类型
 

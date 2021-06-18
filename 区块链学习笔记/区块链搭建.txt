@@ -1,0 +1,37 @@
+
+geth removedb
+rm -rf /bro/00/
+
+vi genesis.json
+
+{
+  "config": {
+    "chainId": 202005,
+    "homesteadBlock": 0,
+    "eip155Block": 0,
+    "eip158Block": 0
+  },
+  "alloc": {
+    "7610fd66c272332edd59a43460ad24eee1973bfe": {"balance": "1000000000"}
+  },
+  "nonce": "0x000000000000002a",
+  "difficulty": "0x020000",
+  "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "timestamp": "0x00",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "extraData": "0x68656c6c6f20776f726c642021",
+  "gasLimit": "0x2fefd8"
+}
+
+geth --datadir /bro/00 init genesis.json
+
+geth --datadir /bro/00 --networkid 202005 --port 30303 --rpc --rpcport 8545 --rpcapi "eth,net,web3,admin" --rpccorsdomain "*" --nodiscover  console
+
+personal.listAccounts
+
+personal.newAccount("123456")
+
+eth.coinbase
+
+eth.getBalance("0x7610fd66c272332edd59a43460ad24eee1973bfe")

@@ -1,0 +1,40 @@
+pragma solidity >0.4.0;
+
+contract C {
+    uint luckyNumber = 52;
+    struct Guess{
+        address player;
+        uint number;
+    }
+    Guess[] public guessHistory;
+    
+    uint256 value;
+    
+    constructor()public payable{
+        value = msg.value;
+    }
+    
+    function number()public view returns(uint256){
+        return value;
+    }
+    
+    function n()public payable returns(uint256){
+        return msg.value;
+    }
+    
+    function  recieveValue() pure public returns(uint){
+        uint b;
+        return b;
+    }
+    
+    function guess(uint _num) public payable{
+        Guess memory newGuess;
+        newGuess.player = msg.sender;
+        newGuess.number = _num;
+        guessHistory.push(newGuess);
+        if(_num == luckyNumber){
+            payable(msg.sender).transfer(msg.value * 2);
+        }
+    }
+  
+}
